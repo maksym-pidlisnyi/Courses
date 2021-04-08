@@ -1,7 +1,7 @@
 
 function Navbar() {
     return (
-        <header className="navbar">
+
             <div className="navbar-content">
                 <div className="navbar-menu">
                     <a id="logo" href="#">WebDevCourses<i className="fab fa-react"/></a>
@@ -18,9 +18,9 @@ function Navbar() {
                     </nav>
                 </div>
             </div>
-        </header>
+
     );
 }
 
 
-ReactDOM.render(<Navbar />, document.getElementById('root'));
+ReactDOM.render(<Navbar />, document.getElementById("navbar"));

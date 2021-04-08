@@ -1,11 +1,11 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 body {
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Poppins", Helvetica, Arial, sans-serif;
   background-color: #181818;
 }
 
@@ -18,9 +18,9 @@ a {
   color: #fff;
 }
 
-.navbar {
+#navbar {
   width: 100%;
-  height: 7vh;
+  height: 60px;
   background-color: #212121;
 }
 
@@ -70,5 +70,63 @@ nav a:hover{
 
 #register-link:hover {
   border: 1px solid rgb(253, 12, 154);
+}
+
+.main {
+  width: 100%;
+  height: 90vh;
+}
+
+
+.main-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-section h2 {
+  position: relative;
+  color: #fff;
+  font-size: 12em;
+}
+
+.main-section img {
+  position: absolute;
+  width: 200px;
+  height: 210px;
+  object-fit: cover;
+}
+
+#ang {
+  top: 80px;
+  left: 70px;
+}
+
+#js {
+  top: 400px;
+  left: 190px;
+}
+
+#pyt {
+  top: 500px;
+  left: 1090px;
+  width: 210px;
+}
+#vue {
+  top: 130px;
+  left: 990px;
+  width: 245px;
+}
+
+#rct {
+  top: 60px;
+  left: 590px;
+}
+#ruby {
+  top: 490px;
 }
 
