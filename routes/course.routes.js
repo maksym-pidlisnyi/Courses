@@ -9,9 +9,11 @@ module.exports = function(app) {
         next();
     });
 
-    app.get("/courses", controller.getAllCourses())
+    app.get("/courses", controller.getAllCourses);
 
-    app.post("/courses", controller.createCourse())
+    app.get("/courses/:id", controller.getCourse);
 
-    app.delete("/courses", controller.deleteCourse())
+    app.post("/courses", controller.upsertCourse);
+
+    app.delete("/courses", controller.deleteCourse);
 };
