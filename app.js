@@ -22,7 +22,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'src')));
 app.use(cors(corsOptions))
+
+app.get('/', (req, res) => {
+    res.sendFile('index.html')
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -32,19 +37,21 @@ app.use('/users', usersRouter);
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 
-db.mongoose
-    .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(() => {
-        console.log("Successfully connect to MongoDB.");
-        initial();
-    })
-    .catch(err => {
-        console.error("Connection error", err);
-        process.exit();
-    });
+
+
+// db.mongoose
+//     .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//     })
+//     .then(() => {
+//         console.log("Successfully connect to MongoDB.");
+//         initial();
+//     })
+//     .catch(err => {
+//         console.error("Connection error", err);
+//         process.exit();
+//     });
 
 function initial() {
     Role.estimatedDocumentCount((err, count) => {
