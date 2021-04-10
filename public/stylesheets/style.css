@@ -130,3 +130,102 @@ nav a:hover{
   top: 490px;
 }
 
+
+footer {
+  width: 100%;
+  height: 200px;
+  background-color: #212121;
+}
+
+.footer-content {
+  height: 100%;
+  margin: 0 auto;
+  padding: 50px 80px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+.footer-content > div {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.privacy-and-terms h4:hover {
+cursor: pointer;
+}
+
+.privacy-and-terms h4:nth-child(2) {
+  margin-top: 25px;
+}
+
+.subscribe-form {
+  margin-top: 25px;
+}
+
+
+#subscribe-input {
+  padding: 15px;
+  border: 1px solid #9b9b9b;
+  background-color: #212121;
+  text-transform: uppercase;
+}
+
+#subscribe-btn {
+  padding: 15px 25px;
+  margin-left: 25px;
+  color: #fff;
+  background-color: rgb(255, 50, 167);
+  border: 0;
+  text-transform: uppercase;
+  transition: all .1s ease;
+}
+
+#subscribe-btn:hover {
+  background-color: rgb(253, 12, 154);
+  cursor: pointer
+}
+
+div.contact-us-container {
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.brand-icons {
+  margin-top: 25px;
+  width: 100%;
+  font-size: 30px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.brand-icons a:hover {
+  color: rgb(253, 12, 154);
+}
+
+.follow-us {
+  width: 40%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.contact-us {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.contact-us h5:nth-child(2) {
+  margin-top: 25px;
+}
+
+.contact-us h5:nth-child(2):hover {
+  cursor: pointer;
+}
+
+

@@ -6,15 +6,15 @@ function Navbar() {
                 <div className="navbar-menu">
                     <a id="logo" href="#">WebDevCourses<i className="fab fa-react"/></a>
                     <nav>
-                        <a href="#">Головна</a>
-                        <a href="#">Про Нас</a>
-                        <a href="#">Курси</a>
+                        <a href="#">Home</a>
+                        <a href="#">About Us</a>
+                        <a href="#">Products</a>
                     </nav>
                 </div>
                 <div className="register-menu">
                     <nav>
-                        <a href="#">Login</a>
-                        <a id="register-link" href="#">Register</a>
+                        <a href="#">Sign In</a>
+                        <a id="register-link" href="#">Sign Up</a>
                     </nav>
                 </div>
             </div>
