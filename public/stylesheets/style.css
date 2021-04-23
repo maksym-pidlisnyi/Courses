@@ -18,10 +18,17 @@ a {
   color: #fff;
 }
 
+.nav-wrapper {
+  height: 60px;
+}
+
 #navbar {
   width: 100%;
   height: 60px;
   background-color: #212121;
+  position: fixed;
+  z-index: 2;
+  box-shadow: 0 4px 16px rgba(0,0,0, 0.25);
 }
 
 .navbar-content {
@@ -40,7 +47,7 @@ a {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  font-family: 'PS Commons Bold', sans-serif;;
+  font-family: 'PS Commons Bold', sans-serif;
 }
 
 nav {
@@ -74,27 +81,40 @@ nav a:hover{
 
 .main {
   width: 100%;
-  height: 90vh;
+  height: fit-content;
+  min-height: 90vh;
 }
 
 
 .main-section {
-  position: relative;
+  margin: 0 auto;
+  padding: 0 80px;
   width: 100%;
   height: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
-.main-section h2 {
+.main-section-logos {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-section-logos h2 {
   position: relative;
   color: #fff;
   font-size: 12em;
 }
 
-.main-section img {
+.main-section-logos img {
   position: absolute;
   width: 200px;
   height: 210px;
@@ -112,8 +132,8 @@ nav a:hover{
 }
 
 #pyt {
-  top: 500px;
-  left: 1090px;
+  top: 420px;
+  left: 890px;
   width: 210px;
 }
 #vue {
@@ -228,4 +248,29 @@ div.contact-us-container {
   cursor: pointer;
 }
 
+.courses-container {
+  width: 100%;
+  height: 100%;
+  padding: 50px 150px;
+}
+
+.course {
+  height: 300px;
+  margin-bottom: 20px;
+  background-color: #212121;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
+  border-radius: 10px;
+  border-bottom: 1px solid rgb(253, 12, 154);;
+}
+
+.course-header {
+  background-color: #0e0d0d;
+  padding: 25px 50px;
+}
+
+.course-header h4 {
+  color: #fff;
+  font-size: 22px;
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
+}
 

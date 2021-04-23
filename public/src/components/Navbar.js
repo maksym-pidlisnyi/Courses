@@ -6,9 +6,9 @@ function Navbar() {
                 <div className="navbar-menu">
                     <a id="logo" href="#">WebDevCourses<i className="fab fa-react"/></a>
                     <nav>
-                        <a href="#">Home</a>
+                        <a href="/">Home</a>
                         <a href="#">About Us</a>
-                        <a href="#">Products</a>
+                        <a href="/courses">Products</a>
                     </nav>
                 </div>
                 <div className="register-menu">

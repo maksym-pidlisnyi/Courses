@@ -25,12 +25,46 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'src')));
 app.use(cors(corsOptions))
 
+
+//TODO move to index router
 app.get('/', (req, res) => {
     res.sendFile('index.html')
 })
 
+app.get('/courses', (req, res) => {
+    res.sendFile('courses.html', { root: __dirname + '/public/'})
+})
+
+app.get('/coursesapi', (req, res) => {
+    res.status(201).json([
+        {
+            id: "1",
+            title: "First Course",
+            description: "first description lorem ipsum dolor sit amet",
+            pricing: "120",
+            startDate: Date.now()
+        },
+        {
+            id: "2",
+            title: "Second Course",
+            description: "Second description lorem ipsum dolor sit amet",
+            pricing: "140",
+            startDate: Date.now()
+        },
+        {
+            id: "3",
+            title: "Third Course",
+            description: "Third description lorem ipsum dolor sit amet",
+            pricing: "150",
+            startDate: Date.now()
+        }
+    ])
+})
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 
 // TODO maybe change into more clear way as above
 //  Now, just for testing
@@ -40,19 +74,19 @@ require('./routes/course.routes')(app);
 
 
 
-db.mongoose
-    .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    })
-    .then(() => {
-        console.log("Successfully connect to MongoDB.");
-        // initial();
-    })
-    .catch(err => {
-        console.error("Connection error", err);
-        process.exit();
-    });
+// db.mongoose
+//     .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true
+//     })
+//     .then(() => {
+//         console.log("Successfully connect to MongoDB.");
+//         // initial();
+//     })
+//     .catch(err => {
+//         console.error("Connection error", err);
+//         process.exit();
+//     });
 
 function initial() {
     Role.estimatedDocumentCount((err, count) => {

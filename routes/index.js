@@ -1,9 +1,21 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
-/* GET home page. */
+router.use(express.static(path.join(__dirname, '../public')));
+router.use(express.static(path.join(__dirname, '../src')));
+
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.sendFile('index');
 });
+
+router.get('/courses', (req, res) => {
+  res.sendFile('courses');
+});
+
+
+
+
+
 
 module.exports = router;
