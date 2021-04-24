@@ -39,24 +39,31 @@ app.get('/coursesapi', (req, res) => {
     res.status(201).json([
         {
             id: "1",
-            title: "First Course",
-            description: "first description lorem ipsum dolor sit amet",
-            pricing: "120",
-            startDate: Date.now()
+            title: 'First Course',
+            description: "first Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            price: "120",
+            startDate: '2021-04-23'
         },
         {
             id: "2",
-            title: "Second Course",
-            description: "Second description lorem ipsum dolor sit amet",
-            pricing: "140",
-            startDate: Date.now()
+            title: 'Second Course',
+            description: "Second Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            price: "140",
+            startDate: '2021-05-25'
         },
         {
             id: "3",
-            title: "Third Course",
-            description: "Third description lorem ipsum dolor sit amet",
-            pricing: "150",
-            startDate: Date.now()
+            title: 'Third Course',
+            description: "Third Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            price: "150",
+            startDate: '2021-06-01'
+        },
+        {
+            id: "4",
+            title: 'Fourth Course',
+            description: "Third Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            price: "170",
+            startDate: '2021-06-07'
         }
     ])
 })

@@ -10,10 +10,14 @@ const Course = (props) => {
             <div className="course-body">
                 <p className="course-description">{description}</p>
                 <div className="course-additional-info">
-
+                        <h4>{startDate}</h4>
+                        <h4>{price}$</h4>
                 </div>
             </div>
-            <a className="more-info-ref" href="#">More info..</a>
+            <div className="floating-up-div">
+                <a className="more-info-ref" href="#">More info</a>
+            </div>
+
 
         </div>
     )

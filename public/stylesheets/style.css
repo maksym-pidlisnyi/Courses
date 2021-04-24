@@ -94,27 +94,33 @@ nav a:hover{
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
-
 }
 
 .main-section-logos {
-  position: relative;
-  width: 100%;
-  height: 90vh;
-  overflow: hidden;
+  width: fit-content;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.main-section-logos h2 {
+.logos {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  /*overflow: hidden;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logos h2 {
   position: relative;
   color: #fff;
   font-size: 12em;
 }
 
-.main-section-logos img {
+.logos img {
   position: absolute;
   width: 200px;
   height: 210px;
@@ -123,31 +129,34 @@ nav a:hover{
 
 #ang {
   top: 80px;
-  left: 70px;
+  left: -50px;
 }
 
 #js {
   top: 400px;
-  left: 190px;
+  left: 0;
 }
 
 #pyt {
   top: 420px;
-  left: 890px;
+  left: 790px;
   width: 210px;
 }
+
 #vue {
   top: 130px;
-  left: 990px;
+  left: 790px;
   width: 245px;
 }
 
 #rct {
-  top: 60px;
-  left: 590px;
+  top: 30px;
+  left: 390px;
 }
+
 #ruby {
   top: 490px;
+  left: 350px;
 }
 
 
@@ -259,9 +268,12 @@ div.contact-us-container {
   margin-bottom: 20px;
   background-color: #212121;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
-  border-radius: 10px;
-  border-bottom: 1px solid rgb(253, 12, 154);;
+  border-style: solid;
+  border-width: 0 0 3px 0;
+  border-image: linear-gradient(to right, #F05A28,#EC008C,#F05A28) 1;
+  position: relative;
 }
+
 
 .course-header {
   background-color: #0e0d0d;
@@ -274,3 +286,71 @@ div.contact-us-container {
   font-family: "Poppins", Helvetica, Arial, sans-serif;
 }
 
+
+
+.sort-bar {
+  width: 100%;
+  height: 50px;
+  background-color: #212121;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+}
+
+.sort-label {
+  color: #bdb9b9;
+  font-size: 14px;
+}
+input[type=checkbox] {
+  margin-right: 10px;
+}
+
+input[type=checkbox]:checked {
+  outline: 2px solid #F05A28;
+}
+
+.course-description {
+  width: 100%;
+  height: 100px;
+  padding: 25px 50px;
+  font-size: 15px;
+  color: #fff;
+}
+
+.course-additional-info {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  color: #a8a7a7;
+  padding: 25px 50px;
+}
+
+.floating-up-div {
+  width: 100%;
+  height: 15px;
+  position: absolute;
+  bottom: 0;
+  transition: all .2s linear;
+}
+
+.floating-up-div a {
+  display: none;
+}
+
+.floating-up-div:hover {
+  height: 35px;
+  display: flex;
+  align-items: stretch;
+  background: linear-gradient(to right, #F05A28,#EC008C,#F05A28);
+}
+
+.floating-up-div:hover a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  font-weight: bolder;
+  text-align: center;
+  padding: 8px 0;
+}
