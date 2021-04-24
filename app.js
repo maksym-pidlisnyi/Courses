@@ -35,6 +35,10 @@ app.get('/courses', (req, res) => {
     res.sendFile('courses.html', { root: __dirname + '/public/'})
 })
 
+app.get('/login', (req, res) => {
+    res.sendFile('login.html', { root: __dirname + '/public/'})
+})
+
 app.get('/coursesapi', (req, res) => {
     res.status(201).json([
         {
