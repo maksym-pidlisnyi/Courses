@@ -410,11 +410,15 @@ input[type=checkbox]:checked {
   align-items: center;
   justify-content: space-around;
   /*margin-top: 20px;*/
-  font-size: 15px;
-  color: #767676;
 }
 
-.login-alts span:hover, .register-form span:hover {
+.login-alts a, .register-alts a {
+  font-size: 15px;
+  color: #767676;
+  text-decoration: none;
+}
+
+.login-alts a:hover, .register-form a:hover {
   color: #c6c6c6;
 }
 
