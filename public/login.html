@@ -11,9 +11,9 @@
     <div class="main">
         <section class="main-section">
             <div class="login-register-form-wrapper">
-                <form class="login-form">
-                        <input type="email" id="email" name="email" placeholder="Email">
-                        <input type="text" id="pass" name="password" placeholder="Password">
+                <form id="loginForm" class="login-form" action="/api/auth/signin" method="post">
+                        <input type="text" id="email" name="email" placeholder="Email">
+                        <input type="password" id="pass" name="password" placeholder="Password">
                         <button class="sign-in-btn" type="submit" id="login-btn">Sign In</button>
                         <div class="login-alts">
                             <span> <a href="/register">Sign up</a></span>
@@ -24,6 +24,51 @@
         </section>
     </div>
 </div>
+<script>
+    // const form = document.getElementById('loginForm');
+    // form.addEventListener('submit',  (e) => {
+    //     let data = {
+    //         email: "maks@gmail.com",
+    //         password: "12345678"
+    //     };
+    //     fetch('/api/auth/signin', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(data)
+    //     }).then(response => response.json())
+    //         .then(data => {
+    //             console.log('Success:', data);
+    //         })
+    //         .catch((error) => {
+    //             console.error('Error:', error);
+    //         });
+    //
+    //     window.location.href = "http://localhost:3000/";
+    // });
+    // document.querySelector('form').addEventListener('submit',  (e) => {
+    //     const form = document.querySelector('form');
+    //     const data = Object.fromEntries(new FormData(form).entries());
+    //
+    //     fetch('./counter').then(value => {
+    //         return value.json();
+    //     }).then(data => {
+    //
+    //     });
+    //
+    //
+    //     // let response = await fetch('/api/auth/signin', {
+    //     //     method: 'POST',
+    //     //     body: formData
+    //     // });
+    //     //
+    //     // let result = await response.json();
+    //     //
+    //     // console.log(result);
+    //     // alert(result.accessToken);
+    // });
+</script>
 
 
 </body>

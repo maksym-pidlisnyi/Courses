@@ -83,7 +83,6 @@ app.get('/coursesapi', (req, res) => {
     ])
 })
 
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -95,20 +94,19 @@ require('./routes/user.routes')(app);
 require('./routes/course.routes')(app);
 
 
-
-// db.mongoose
-//     .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true
-//     })
-//     .then(() => {
-//         console.log("Successfully connect to MongoDB.");
-//         // initial();
-//     })
-//     .catch(err => {
-//         console.error("Connection error", err);
-//         process.exit();
-//     });
+    db.mongoose
+    .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+        console.log("Successfully connect to MongoDB.");
+        // initial();
+    })
+    .catch(err => {
+        console.error("Connection error", err);
+        process.exit();
+    });
 
 function initial() {
     Role.estimatedDocumentCount((err, count) => {

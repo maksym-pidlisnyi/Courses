@@ -13,7 +13,7 @@ function Navbar() {
                 </div>
                 <div className="register-menu">
                     <nav>
-                        <a href="/login">Sign In</a>
+                        <a  href="/login">Sign In</a>
                         <a id="register-link" href="/register">Sign Up</a>
                     </nav>
                 </div>

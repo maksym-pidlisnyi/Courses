@@ -8,7 +8,7 @@ let bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
     const user = new User({
-        username: req.body.username,
+        username: req.body.name,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8)
     });
@@ -55,7 +55,8 @@ exports.signup = (req, res) => {
                         return;
                     }
 
-                    res.send({ message: "User was registered successfully!" });
+                    // res.send({ message: "User was registered successfully!" });
+                    res.redirect('/login')
                 });
             });
         }
@@ -64,7 +65,7 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
     User.findOne({
-        username: req.body.username
+        email: req.body.email
     })
         .populate("roles", "-__v")
         .exec((err, user) => {
@@ -98,12 +99,21 @@ exports.signin = (req, res) => {
             for (let i = 0; i < user.roles.length; i++) {
                 authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
             }
-            res.status(200).send({
-                id: user._id,
-                username: user.username,
-                email: user.email,
-                roles: authorities,
-                accessToken: token
+
+
+            res.cookie("accessToken", token, {
+                maxAge: 3600,
+                httpOnly: true
             });
+
+
+            // res.status(200).send({
+            //     id: user._id,
+            //     username: user.username,
+            //     email: user.email,
+            //     roles: authorities,
+            //     accessToken: token
+            // });
+            res.redirect('/');
         });
 };
