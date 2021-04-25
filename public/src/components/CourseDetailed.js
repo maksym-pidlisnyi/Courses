@@ -40,6 +40,48 @@ class CourseDetailed extends React.Component {
                             <a href="#">Enroll Me!</a>
                         </div>
                     </div>
+
+                    <div className="detailed-course-pricing">
+                        <div className="pricing-options-wrapper">
+                            <div className="toggle-container">
+                                <div className="input-box">
+                                    <input type="checkbox" name="" id="pricing-plan-input" onClick={ () => {
+                                        const label = document.getElementById("pricing-plan-label");
+                                        if(document.getElementById("pricing-plan-input").checked === true) {
+                                            label.innerHTML = '😍';
+                                        } else {
+                                            label.innerHTML = '😄';
+                                        }
+                                    }}/>
+                                    <label htmlFor="pricing-plan-input" id="pricing-plan-label">😄</label>
+                                </div>
+                            </div>
+                            <div className="pricing-options-container">
+                                <div className="pricing-plan">
+                                    <div className="pricing-plan-display">
+                                        <h2>standard</h2>
+                                        <div className="pricing-price">
+                                            <span className="price">10</span>
+                                            <span>$</span>
+                                        </div>
+                                    </div>
+                                    <div className="pricing-plan-features"></div>
+                                </div>
+                                <div className="pricing-plan">
+                                    <div id="best-option">best option</div>
+                                    <div className="pricing-plan-display">
+                                            <h2>premium</h2>
+                                            <div className="pricing-price">
+                                                <span className="price">10</span>
+                                                <span>$</span>
+                                            </div>
+                                    </div>
+                                    <div className="pricing-plan-features"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             );
