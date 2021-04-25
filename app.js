@@ -36,6 +36,11 @@ app.get('/courses', (req, res) => {
     res.sendFile('courses.html', { root: __dirname + '/public/'})
 })
 
+app.get('/courses/:courseId', (req, res) => {
+    console.log("Course id: " + req.params.courseId)
+    res.sendFile('courseDetailed.html', { root: __dirname + '/public/'})
+})
+
 app.get('/login', (req, res) => {
     res.sendFile('login.html', { root: __dirname + '/public/'})
 })
@@ -43,6 +48,7 @@ app.get('/login', (req, res) => {
 app.get('/register', (req, res) => {
     res.sendFile('register.html', { root: __dirname + '/public/'})
 })
+
 
 app.get('/coursesapi', (req, res) => {
     res.status(201).json([

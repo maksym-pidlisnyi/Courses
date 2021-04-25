@@ -15,10 +15,8 @@ const Course = (props) => {
                 </div>
             </div>
             <div className="floating-up-div">
-                <a className="more-info-ref" href="#">More info</a>
+                <a className="more-info-ref" href={`/courses/${id}`}>More info</a>
             </div>
-
-
         </div>
     )
 

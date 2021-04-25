@@ -96,6 +96,13 @@ nav a:hover{
   justify-content: center;
 }
 
+@media screen and (min-width: 1600px) {
+  .main-section {
+    padding: 0 280px;
+  }
+
+}
+
 .main-section-logos {
   width: fit-content;
   height: 100vh;
@@ -350,7 +357,7 @@ input[type=checkbox]:checked {
   display: block;
   width: 100%;
   text-decoration: none;
-  font-weight: bolder;
+  font-weight: bold;
   text-align: center;
   padding: 8px 0;
 }
@@ -424,4 +431,92 @@ input[type=checkbox]:checked {
 
 .register-form {
   padding-top: 30px;
+}
+
+
+/*Detailed course page*/
+
+.main-section-course-detailed {
+  width: 100%;
+  height: 100%;
+}
+
+.detailed-course-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+
+}
+
+.detailed-course-header {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.course-header-img-block {
+  flex-basis: 60%;
+  background-image: url(https://imgix.bustle.com/uploads/image/2019/1/7/e3c30a40-0e2a-443b-9a57-a91c44933179-stocksy_txp15a16c373fc200_medium_198009.jpg?w=1200&h=630&q=70&fit=crop&crop=faces&fm=jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.course-header-text-block {
+  flex-basis: 40%;
+  height: 100%;
+  background: linear-gradient(
+          100.37deg
+          , rgb(236, 0, 139) 0%, rgb(241, 90, 34) 100%);
+  /*background-image: linear-gradient(*/
+  /*        140deg*/
+  /*        , #EADEDB 0%, #BC70A4 50%, #BFD641 75%);*/
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.course-header-text-block a {
+  display: block;
+  margin-top: 30px;
+  margin-left: 55px;
+  padding: 15px 55px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #1f1f1f;
+  transition: all 0.1s linear;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
+
+}
+
+.course-header-text-block a:hover {
+  background-color: #000;
+
+}
+
+.course-header-text-content {
+
+}
+
+.course-header-text-content h1 {
+  font-size: 32px;
+  font-weight: bolder;
+  color: #fff;
+  padding: 10px 0 10px 55px;
+}
+
+#course-page-brand-name {
+  margin-bottom: 20px;
+  font-family: "Ebrima";
+}
+
+.course-header-text-content p {
+  font-size: 16px;
+  font-weight: lighter;
+  color: #fff;
+  padding: 10px 0 10px 55px;
 }
