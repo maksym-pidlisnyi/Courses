@@ -27,6 +27,7 @@ app.use(cors(corsOptions))
 
 
 //TODO move to index router
+// FOR TESTING PURPOSES
 app.get('/', (req, res) => {
     res.sendFile('index.html')
 })
@@ -37,6 +38,10 @@ app.get('/courses', (req, res) => {
 
 app.get('/login', (req, res) => {
     res.sendFile('login.html', { root: __dirname + '/public/'})
+})
+
+app.get('/register', (req, res) => {
+    res.sendFile('register.html', { root: __dirname + '/public/'})
 })
 
 app.get('/coursesapi', (req, res) => {
