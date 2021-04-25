@@ -490,17 +490,13 @@ input[type=checkbox]:checked {
   background-color: #1f1f1f;
   transition: all 0.1s linear;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
-
 }
 
 .course-header-text-block a:hover {
   background-color: #000;
-
 }
 
-.course-header-text-content {
-
-}
+.course-header-text-content {}
 
 .course-header-text-content h1 {
   font-size: 32px;
@@ -520,3 +516,125 @@ input[type=checkbox]:checked {
   color: #fff;
   padding: 10px 0 10px 55px;
 }
+
+/*PRICING PLANS*/
+
+.detailed-course-pricing {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(#181818,#000000);
+}
+
+
+.pricing-options-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: fit-content;
+  margin: 70px 0;
+}
+
+.toggle-container {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.pricing-options-container {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 800px;
+}
+
+.pricing-plan {
+  width: 50%;
+  height: 800px;
+  background-color: #181818;
+  box-shadow: 0 0 25px -2px rgba(0, 0, 0, 0.4);
+}
+
+.pricing-plan:nth-child(1) {
+  margin-top: 15px;
+  z-index: 1;
+}
+
+.pricing-plan:nth-child(2) {
+  height: 815px;
+}
+
+.pricing-plan-display {
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(180deg,#181818 0%,#222222 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+.pricing-plan-display:nth-child(2) {
+  height: calc(50% - 20px);
+}
+
+#best-option {
+  width: 100%;
+  height: 30px;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #000;
+  background-color: #f7a614;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Ebrima";
+  font-weight: bolder;
+}
+
+/*Emoji Checkbox*/
+
+.input-box {
+  width: 80px;
+  height: 30px;
+  background-color: #767676;
+  border-radius: 50px;
+  position: relative;
+}
+
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  appearance: none;
+  position: absolute;
+}
+
+.input-box input:checked {
+  outline: none;
+}
+
+.input-box label {
+  font-size: 2.8rem;
+  position: absolute;
+  cursor: pointer;
+  transform: translate(-10px, -17px);
+  transition: transform .4s;
+}
+
+.input-box input:checked ~ label {
+  transform: translate(30px, -17px);
+}
+
+
+
+
