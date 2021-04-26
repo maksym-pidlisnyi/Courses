@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors')
 
+let fs = require('fs');
+
 const db = require("./models");
 const dbConfig = require("./config/db.config");
 const Role = db.role;
@@ -94,7 +96,17 @@ require('./routes/user.routes')(app);
 require('./routes/course.routes')(app);
 
 
-    db.mongoose
+app.get('/api/getToken', (req, res) => {
+    let token = fs.readFileSync("token.txt","utf8")
+    res.send({token: token});
+})
+
+app.get('/logout', (req, res) => {
+    fs.writeFileSync("token.txt", '');
+    res.redirect('/');
+})
+
+db.mongoose
     .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
         useNewUrlParser: true,
         useUnifiedTopology: true

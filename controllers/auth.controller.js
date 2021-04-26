@@ -3,6 +3,8 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 
+let fs = require('fs');
+
 let jwt = require("jsonwebtoken");
 let bcrypt = require("bcryptjs");
 
@@ -101,11 +103,12 @@ exports.signin = (req, res) => {
             }
 
 
-            res.cookie("accessToken", token, {
-                maxAge: 3600,
-                httpOnly: true
-            });
+            // res.cookie("accessToken", token, {
+            //     maxAge: 3600,
+            //     httpOnly: true
+            // });
 
+            fs.writeFileSync("token.txt", token);
 
             // res.status(200).send({
             //     id: user._id,
