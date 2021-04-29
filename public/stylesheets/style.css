@@ -343,7 +343,7 @@ footer h5 {
 
 .course {
   height: 300px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   background-color: #212121;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
   border-style: solid;
@@ -356,6 +356,10 @@ footer h5 {
 .course-header {
   background-color: #0e0d0d;
   padding: 25px 50px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .course-header h4 {
@@ -364,16 +368,28 @@ footer h5 {
   font-family: "Poppins", Helvetica, Arial, sans-serif;
 }
 
+.danger-btn {
+  padding: 10px 25px;
+  background-color: #0e0d0d;
+  border: 1px solid white;
+  border-radius: 50px;
+  color: #fff;
+}
 
+.danger-btn:hover {
+  border: 1px solid red;
+  color: rgb(255, 50, 50);
+}
 
 .sort-bar {
   width: 100%;
   height: 50px;
   background-color: #212121;
+  padding: 0 50px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   margin-bottom: 50px;
 }
 
@@ -381,13 +397,22 @@ footer h5 {
   color: #bdb9b9;
   font-size: 14px;
 }
-input[type=checkbox] {
-  margin-right: 10px;
+
+/*input[type=checkbox] {*/
+/*  margin-right: 10px;*/
+/*}*/
+
+/*input[type=checkbox]:checked {*/
+/*  outline: 2px solid #F05A28;*/
+/*}*/
+
+#sort-select {
+  padding: 10px 5px 10px 0;
+  color: #f6f6f6;
+  background-color: #212121;
+  border: none;
 }
 
-input[type=checkbox]:checked {
-  outline: 2px solid #F05A28;
-}
 
 .course-description {
   width: 100%;
@@ -402,7 +427,13 @@ input[type=checkbox]:checked {
   flex-flow: row nowrap;
   justify-content: space-between;
   color: #a8a7a7;
+  margin-top: 10px;
   padding: 25px 50px;
+}
+
+h4.course-price {
+  font-size: 20px;
+  color: #eaeaea;
 }
 
 .floating-up-div {
@@ -658,6 +689,8 @@ html {
   align-items: center;
   justify-content: center;
   flex-flow: column;
+  font-size: 17px;
+  color: #eaeaea;
 }
 
 .pricing-plan-display:nth-child(2) {
@@ -688,7 +721,7 @@ html {
 
 .pricing-price {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .price {
@@ -708,6 +741,7 @@ html {
 .start-btn {
   text-decoration: none;
   color: #fff;
+  margin-top: 15px;
   padding: 25px 50px;
   background: linear-gradient(to right, #F05A28,#EC008C);
   text-transform: uppercase;
@@ -719,7 +753,7 @@ html {
 
 .start-btn:hover {
   background: linear-gradient(to right, #EC008C, #F05A28);
-  box-shadow: 0 0 10px 8px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, .2);
 }
 
 .pricing-plan-features {
@@ -814,6 +848,19 @@ html {
   border-radius: 7px;
   height: 25%;
   padding: 10px;
+  display: flex;
+}
+
+span.testi-user-name {
+  height: 100%;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.testi-header img {
+  width: 40px;
+  height: 40px;
 }
 
 .testi-body {
