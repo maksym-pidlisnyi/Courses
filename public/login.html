@@ -51,6 +51,7 @@
                 } else {
                     let token = responseObj.accessToken;
                     sessionStorage.setItem('accessToken', token);
+                    sessionStorage.setItem('role', responseObj.roles);
                     window.location.replace("http://localhost:3000/");
                 }
             } catch(e){
