@@ -28,7 +28,7 @@ class CourseDetailed extends React.Component {
         if (this.state.course) {
             return (
 
-                <div className="course-detailed-container">
+                <div className="detailed-course-container">
                     <div className="detailed-course-header">
                         <div className="course-header-img-block"></div>
                         <div className="course-header-text-block">
@@ -37,13 +37,14 @@ class CourseDetailed extends React.Component {
                                 <h1>JS</h1>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores earum error eveniet quasi quo rem similique ut? Animi asperiores deleniti ex facilis, maiores modi placeat quibusdam quod sequi ut.</p>
                             </div>
-                            <a href="#">Enroll Me!</a>
+                            <a href="#detailed-course-pricing">Enroll Me!</a>
                         </div>
                     </div>
 
-                    <div className="detailed-course-pricing">
+                    <div id="detailed-course-pricing" className="detailed-course-pricing">
                         <div className="pricing-options-wrapper">
                             <div className="toggle-container">
+                                <h2>Monthly</h2>
                                 <div className="input-box">
                                     <input type="checkbox" name="" id="pricing-plan-input" onClick={ () => {
                                         const label = document.getElementById("pricing-plan-label");
@@ -55,6 +56,7 @@ class CourseDetailed extends React.Component {
                                     }}/>
                                     <label htmlFor="pricing-plan-input" id="pricing-plan-label">😄</label>
                                 </div>
+                                <h2>Yearly</h2>
                             </div>
                             <div className="pricing-options-container">
                                 <div className="pricing-plan">
@@ -105,7 +107,7 @@ class CourseDetailed extends React.Component {
                     </div>
 
                     <div className="detailed-course-testimonials">
-                        <h1>what our customers saying</h1>
+                        <h1>what our customers are saying</h1>
                         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
                             <div className="carousel-inner">
                                 <div className="carousel-item active">

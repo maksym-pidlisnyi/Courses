@@ -34,6 +34,10 @@ app.get('/', (req, res) => {
     res.sendFile('index.html')
 })
 
+app.get('/about', (req, res) => {
+    res.sendFile('aboutUs.html', { root: __dirname + '/public/'})
+})
+
 app.get('/courses', (req, res) => {
     res.sendFile('courses.html', { root: __dirname + '/public/'})
 })
