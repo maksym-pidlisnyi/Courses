@@ -11,8 +11,7 @@
     <div class="main">
         <section class="main-section">
             <div class="login-register-form-wrapper">
-<!--                onsubmit="getParam()"-->
-                <form id="loginForm" class="login-form"  action="/api/auth/signin" method="post">
+                <form id="loginForm" class="login-form">
                         <input type="text" id="email" name="email" placeholder="Email">
                         <input type="password" id="pass" name="password" placeholder="Password">
                         <button class="sign-in-btn" type="submit" id="login-btn">Sign In</button>
@@ -26,18 +25,39 @@
     </div>
 </div>
 <script type="text/javascript">
-    // function getParam() {
-    //     fetch('/api/getToken')
-    //         .then(value => value.json())
-    //         .then(data => {
-    //             let token = data.token.toString()
-    //             if (token != null && token.length > 1) {
-    //                 sessionStorage.setItem('accessToken', token);
-    //             }
-    //         }).catch((error) => {
-    //         console.error('Error:', error);
-    //     });
-    // }
+    const form = document.querySelector('.login-form');
+    form.addEventListener('submit', async(e) => {
+        e.preventDefault();
+
+        const login = form.email.value;
+        const password = form.pass.value;
+
+        const emptyOrWhitespaceRegex = new RegExp("^$|\\s+");
+
+        if(emptyOrWhitespaceRegex.test(login) || emptyOrWhitespaceRegex.test(password)){
+            alert('Login and Password fields must be filled!')
+        } else {
+            try{
+                const response = await fetch('/api/auth/signin', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email: login, password: password})
+                });
+
+                const responseObj = await response.json();
+                if (responseObj.message){
+                    alert(responseObj.message);
+                    console.log(responseObj.error);
+                } else {
+                    let token = responseObj.accessToken;
+                    sessionStorage.setItem('accessToken', token);
+                    window.location.replace("http://localhost:3000/");
+                }
+            } catch(e){
+                console.log(e);
+            }
+        }
+    })
 </script>
 
 

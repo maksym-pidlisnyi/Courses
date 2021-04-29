@@ -102,21 +102,13 @@ exports.signin = (req, res) => {
                 authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
             }
 
+            res.status(200).send({
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                roles: authorities,
+                accessToken: token
+            });
 
-            // res.cookie("accessToken", token, {
-            //     maxAge: 3600,
-            //     httpOnly: true
-            // });
-
-            fs.writeFileSync("token.txt", token);
-
-            // res.status(200).send({
-            //     id: user._id,
-            //     username: user.username,
-            //     email: user.email,
-            //     roles: authorities,
-            //     accessToken: token
-            // });
-            res.redirect('/');
         });
 };
