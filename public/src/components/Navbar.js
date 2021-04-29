@@ -4,7 +4,9 @@ function UserNavigation() {
         //todo if role == admin else
         return (
             <nav>
-                <a  href="/logout">Log out</a>
+                <a  href="/" onClick={() => {
+                    sessionStorage.clear();
+                }}>Log out</a>
             </nav>
         )
     } else {
