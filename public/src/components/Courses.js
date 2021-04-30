@@ -19,6 +19,10 @@ class Courses extends React.Component {
 
 
     loadPosts() {
+        let url;
+        if(window.location.href.split('/')[0]==='my-courses' && sessionStorage.getItem("role") === 'user') {
+           //todo write fetch with body {user token} to /courses/user/token
+        }
         fetch("/coursesapi")
             .then((res) => res.json())
             .then((res) => {
@@ -66,6 +70,31 @@ class Courses extends React.Component {
             return (
 
                 <div className="courses-container">
+                    <button className="collapsible" onClick={ () => {
+                        document.getElementsByClassName("collapsible")[0].classList.toggle("active");
+                        const content = document.getElementsByClassName("collapsible-course-adding")[0];
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    }
+                    }>Add New Course</button>
+                    <div className="collapsible-course-adding">
+                        <form className="add-course-form">
+                                <input type="text" id="course-title" name="course-title" placeholder="Title" required/>
+                                <input type="date" id="start-date" name="start-date" min={Date.now()} placeholder="Start Date" required/>
+                                <div className="add-course-prices">
+                                    <input type="text" id="course-sm" name="course-sm" placeholder="Standard Month" required/>
+                                    <input type="text" id="course-sy" name="course-sy" placeholder="Standard Year" required/>
+                                    <input type="text" id="course-pm" name="course-pm" placeholder="Premium Month" required/>
+                                    <input type="text" id="course-py" name="course-py" placeholder="Premium Year" required/>
+                                </div>
+                                <textarea name="add-course-description" id="add-course-description" placeholder="Description" required/>
+
+                                <button className="add-course-btn" type="submit" id="add-course-btn">Submit</button>
+                        </form>
+                    </div>
                     <div className="sort-bar">
                         <select name="sort-select" id="sort-select" onChange={ () => {
                             const select = document.getElementById('sort-select');

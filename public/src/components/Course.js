@@ -8,7 +8,7 @@ function DangerBtn(props) {
             return <button className="danger-btn" onClick={ () => {console.log(props.id)} }>Unenroll</button>
         }
     }
-    return <div></div>
+    return <div/>
 }
 
 const Course = (props) => {

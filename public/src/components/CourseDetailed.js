@@ -21,7 +21,8 @@ class CourseDetailed extends React.Component {
     }
 
     componentDidMount() {
-        //todo extract id
+       const id  = window.location.href.split('/')[1];
+
        // this.loadPosts(id);
     }
 
