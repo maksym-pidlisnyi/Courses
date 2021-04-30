@@ -1,7 +1,17 @@
 
 function UserNavigation() {
     if('accessToken' in sessionStorage) {
-        //todo if role == admin else
+        if(sessionStorage.getItem('role') === 'ROLE_USER'){
+            return (
+                <nav>
+                    <a  href={"/my-courses"}>My Courses</a>
+                    <a  href="/" onClick={() => {
+                        sessionStorage.clear();
+                    }}>Log out</a>
+                </nav>
+            )
+        }
+
         return (
             <nav>
                 <a  href="/" onClick={() => {
@@ -30,7 +40,7 @@ class Navbar extends React.Component {
         return (
             <div className="navbar-content">
                 <div className="navbar-menu">
-                    <a id="logo" href="#">WebDevCourses<i className="fab fa-react"/></a>
+                    <a id="logo" href="/">WebDevCourses<i className="fab fa-react"/></a>
                     <nav>
                         <a href="/">Home</a>
                         <a href="/about">About Us</a>

@@ -52,6 +52,7 @@
                     let token = responseObj.accessToken;
                     sessionStorage.setItem('accessToken', token);
                     sessionStorage.setItem('role', responseObj.roles);
+                    sessionStorage.setItem('userId', responseObj.id);
                     window.location.replace("http://localhost:3000/");
                 }
             } catch(e){

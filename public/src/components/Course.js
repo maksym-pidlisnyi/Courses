@@ -1,13 +1,53 @@
-
 function DangerBtn(props) {
-    if('role' in sessionStorage) {
-        const role = sessionStorage.getItem("role");
-        if(role === 'admin') {
-            return <button className="danger-btn" onClick={ () => {console.log(props.id)} }>Delete</button>
-        } else if(role === 'user') {
-            return <button className="danger-btn" onClick={ () => {console.log(props.id)} }>Unenroll</button>
-        }
+    if (sessionStorage.getItem("role") === 'admin') {
+        return <button className="danger-btn" onClick={async () => {
+
+            try {
+                const response = await fetch('/coursesB', {
+                    method: 'DELETE',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(props.id)
+                });
+
+                const responseObj = await response.json();
+                if (responseObj.message) {
+                    alert(responseObj.message);
+                    console.log(responseObj.error);
+                } else {
+                    alert('Course successfully deleted!');
+                }
+            } catch (e) {
+                console.log(e);
+            }
+
+        }}>Delete</button>
+
+    } else if (props.userCourse) {
+
+        return <button className="danger-btn" onClick={async () => {
+            const courseId = props.id;
+            const userId = sessionStorage.getItem("userId");
+            try {
+                const response = await fetch('/checkOut', {
+                    method: 'DELETE',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({courseId, userId})
+                });
+
+                const responseObj = await response.json();
+                if (responseObj.message) {
+                    alert(responseObj.message);
+                    console.log(responseObj.error);
+                } else {
+                    alert('Successfully unenrolled!');
+                }
+            } catch (e) {
+                console.log(e);
+            }
+
+        }}>Unenroll</button>
     }
+
     return <div/>
 }
 
@@ -18,7 +58,7 @@ const Course = (props) => {
 
             <div className="course-header">
                 <h4>{title}</h4>
-                <DangerBtn id={id}/>
+                <DangerBtn userCourse={props.userCourse} id={id}/>
             </div>
             <div className="course-body">
                 <p className="course-description">{description}</p>

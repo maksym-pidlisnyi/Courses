@@ -1,10 +1,10 @@
-
 class CourseDetailed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             course: {},
-            pricing_term: "month"
+            pricing_term: "month",
+            courseId: ""
         };
     }
 
@@ -13,7 +13,7 @@ class CourseDetailed extends React.Component {
     }
 
     loadPosts(id) {
-        fetch('/courseInfo/' + id)
+        fetch('/coursesB/' + id,)
             .then((res) => res.json())
             .then((res) => {
                 this.handleChange(res);
@@ -21,10 +21,37 @@ class CourseDetailed extends React.Component {
     }
 
     componentDidMount() {
-       const id  = window.location.href.split('/')[1];
+        this.state.courseId = window.location.href.split('/')[1];
 
-       // this.loadPosts(id);
+        //todo uncomment when bd is ready this.loadPosts(id);
     }
+
+    async enrollUser(paymentPlan) {
+        //todo add plan + term in body
+        if ('accessToken' in sessionStorage) {
+            const userId = sessionStorage.getItem('userId')
+            try {
+                const response = await fetch('/enroll', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({courseId, userId})
+                });
+                const responseObj = await response.json();
+                if (responseObj.message) {
+                    alert(responseObj.message);
+                    console.log(responseObj.error);
+                } else {
+                    alert('Successfully enrolled!');
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        } else {
+            window.location.replace("http://localhost:3000/login");
+        }
+
+    }
+
 
     render() {
         if (this.state.course) {
@@ -37,7 +64,9 @@ class CourseDetailed extends React.Component {
                             <div className="course-header-text-content">
                                 <h1 id="course-page-brand-name">WebDevCourses</h1>
                                 <h1>JS</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores earum error eveniet quasi quo rem similique ut? Animi asperiores deleniti ex facilis, maiores modi placeat quibusdam quod sequi ut.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores earum
+                                    error eveniet quasi quo rem similique ut? Animi asperiores deleniti ex facilis,
+                                    maiores modi placeat quibusdam quod sequi ut.</p>
                             </div>
                             <a href="#detailed-course-pricing">Enroll Me!</a>
                         </div>
@@ -48,10 +77,10 @@ class CourseDetailed extends React.Component {
                             <div className="toggle-container">
                                 <h2>Monthly</h2>
                                 <div className="input-box">
-                                    <input type="checkbox" name="" id="pricing-plan-input" onClick={ () => {
+                                    <input type="checkbox" name="" id="pricing-plan-input" onClick={() => {
                                         const label = document.getElementById("pricing-plan-label");
                                         const prices = document.getElementsByClassName("price");
-                                        if(document.getElementById("pricing-plan-input").checked === true) {
+                                        if (document.getElementById("pricing-plan-input").checked === true) {
                                             prices[0].innerHTML = "100";
                                             prices[1].innerHTML = "150";
                                             this.state.pricing_term = "year";
@@ -99,11 +128,11 @@ class CourseDetailed extends React.Component {
                                 <div className="pricing-plan">
                                     <div id="best-option">best option</div>
                                     <div className="pricing-plan-display">
-                                            <h2>premium</h2>
-                                            <div className="pricing-price">
-                                                <span className="price">16</span>
-                                                <span className="currency">$</span>
-                                            </div>
+                                        <h2>premium</h2>
+                                        <div className="pricing-price">
+                                            <span className="price">16</span>
+                                            <span className="currency">$</span>
+                                        </div>
                                         <p className="pricing-term">per month</p>
                                         <a href="#" className="start-btn">start premium plan</a>
                                     </div>
@@ -130,48 +159,111 @@ class CourseDetailed extends React.Component {
                                 <div className="carousel-item active">
                                     <div className="testimonial-triple">
                                         <div className="testimonial-card">
-                                            <div className="testi-header"> <span> <img src="https://pbs.twimg.com/profile_images/844846692956459009/moM6ACpu_bigger.jpg" alt="Avatar"/> </span> <span className="testi-user-name">John Doe</span> </div>
-                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur fugit mollitia quaerat similique?</div>
+                                            <div className="testi-header"><span> <img
+                                                src="https://pbs.twimg.com/profile_images/844846692956459009/moM6ACpu_bigger.jpg"
+                                                alt="Avatar"/> </span> <span className="testi-user-name">John Doe</span>
+                                            </div>
+                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur
+                                                adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam
+                                                nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur
+                                                fugit mollitia quaerat similique?
+                                            </div>
                                         </div>
                                         <div className="testimonial-card">
-                                            <div className="testi-header"> <span> <img src="https://pbs.twimg.com/profile_images/1308211174429749248/ugAopGfO_bigger.jpg" alt="Avatar"/> </span> <span className="testi-user-name">Jane Doe</span> </div>
-                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur fugit mollitia quaerat similique?</div>
+                                            <div className="testi-header"><span> <img
+                                                src="https://pbs.twimg.com/profile_images/1308211174429749248/ugAopGfO_bigger.jpg"
+                                                alt="Avatar"/> </span> <span className="testi-user-name">Jane Doe</span>
+                                            </div>
+                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur
+                                                adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam
+                                                nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur
+                                                fugit mollitia quaerat similique?
+                                            </div>
                                         </div>
                                         <div className="testimonial-card">
-                                            <div className="testi-header"> <span> <img src="https://pbs.twimg.com/profile_images/1341497846168694786/Ls0jopTm_bigger.jpg" alt="Avatar"/> </span> <span className="testi-user-name">Ann J</span> </div>
-                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur fugit mollitia quaerat similique?</div>
+                                            <div className="testi-header"><span> <img
+                                                src="https://pbs.twimg.com/profile_images/1341497846168694786/Ls0jopTm_bigger.jpg"
+                                                alt="Avatar"/> </span> <span className="testi-user-name">Ann J</span>
+                                            </div>
+                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur
+                                                adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam
+                                                nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur
+                                                fugit mollitia quaerat similique?
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="carousel-item">
                                     <div className="testimonial-triple">
                                         <div className="testimonial-card">
-                                            <div className="testi-header"> <span> <img src="https://pbs.twimg.com/profile_images/844846692956459009/moM6ACpu_bigger.jpg" alt="Avatar"/> </span> <span className="testi-user-name">John Doe</span> </div>
-                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur fugit mollitia quaerat similique?</div>
+                                            <div className="testi-header"><span> <img
+                                                src="https://pbs.twimg.com/profile_images/844846692956459009/moM6ACpu_bigger.jpg"
+                                                alt="Avatar"/> </span> <span className="testi-user-name">John Doe</span>
+                                            </div>
+                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur
+                                                adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam
+                                                nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur
+                                                fugit mollitia quaerat similique?
+                                            </div>
                                         </div>
                                         <div className="testimonial-card">
-                                            <div className="testi-header"> <span> <img src="https://pbs.twimg.com/profile_images/1308211174429749248/ugAopGfO_bigger.jpg" alt="Avatar"/> </span> <span className="testi-user-name">Jane Doe</span> </div>
-                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur fugit mollitia quaerat similique?</div>
+                                            <div className="testi-header"><span> <img
+                                                src="https://pbs.twimg.com/profile_images/1308211174429749248/ugAopGfO_bigger.jpg"
+                                                alt="Avatar"/> </span> <span className="testi-user-name">Jane Doe</span>
+                                            </div>
+                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur
+                                                adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam
+                                                nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur
+                                                fugit mollitia quaerat similique?
+                                            </div>
                                         </div>
                                         <div className="testimonial-card">
-                                            <div className="testi-header"> <span> <img src="https://pbs.twimg.com/profile_images/1341497846168694786/Ls0jopTm_bigger.jpg" alt="Avatar"/> </span> <span className="testi-user-name">Ann J</span> </div>
-                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur fugit mollitia quaerat similique?</div>
+                                            <div className="testi-header"><span> <img
+                                                src="https://pbs.twimg.com/profile_images/1341497846168694786/Ls0jopTm_bigger.jpg"
+                                                alt="Avatar"/> </span> <span className="testi-user-name">Ann J</span>
+                                            </div>
+                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur
+                                                adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam
+                                                nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur
+                                                fugit mollitia quaerat similique?
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="carousel-item">
                                     <div className="testimonial-triple">
                                         <div className="testimonial-card">
-                                            <div className="testi-header"> <span> <img src="https://pbs.twimg.com/profile_images/844846692956459009/moM6ACpu_bigger.jpg" alt="Avatar"/> </span> <span className="testi-user-name">John Doe</span> </div>
-                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur fugit mollitia quaerat similique?</div>
+                                            <div className="testi-header"><span> <img
+                                                src="https://pbs.twimg.com/profile_images/844846692956459009/moM6ACpu_bigger.jpg"
+                                                alt="Avatar"/> </span> <span className="testi-user-name">John Doe</span>
+                                            </div>
+                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur
+                                                adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam
+                                                nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur
+                                                fugit mollitia quaerat similique?
+                                            </div>
                                         </div>
                                         <div className="testimonial-card">
-                                            <div className="testi-header"> <span> <img src="https://pbs.twimg.com/profile_images/1308211174429749248/ugAopGfO_bigger.jpg" alt="Avatar"/> </span> <span className="testi-user-name">Jane Doe</span> </div>
-                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur fugit mollitia quaerat similique?</div>
+                                            <div className="testi-header"><span> <img
+                                                src="https://pbs.twimg.com/profile_images/1308211174429749248/ugAopGfO_bigger.jpg"
+                                                alt="Avatar"/> </span> <span className="testi-user-name">Jane Doe</span>
+                                            </div>
+                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur
+                                                adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam
+                                                nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur
+                                                fugit mollitia quaerat similique?
+                                            </div>
                                         </div>
                                         <div className="testimonial-card">
-                                            <div className="testi-header"> <span> <img src="https://pbs.twimg.com/profile_images/1341497846168694786/Ls0jopTm_bigger.jpg" alt="Avatar"/> </span> <span className="testi-user-name">Ann J</span> </div>
-                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur fugit mollitia quaerat similique?</div>
+                                            <div className="testi-header"><span> <img
+                                                src="https://pbs.twimg.com/profile_images/1341497846168694786/Ls0jopTm_bigger.jpg"
+                                                alt="Avatar"/> </span> <span className="testi-user-name">Ann J</span>
+                                            </div>
+                                            <div className="testi-body">Lorem ipsum dolor sit amet, consectetur
+                                                adipisicing elit. Aliquid at commodi consectetur cum dolore ipsam magnam
+                                                nam natus nisi repellat, sint sit tempore voluptas! Amet consequuntur
+                                                fugit mollitia quaerat similique?
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -199,6 +291,4 @@ class CourseDetailed extends React.Component {
 }
 
 
-
-
-ReactDOM.render(<CourseDetailed />, document.getElementsByClassName('main-section-course-detailed')[0]);
+ReactDOM.render(<CourseDetailed/>, document.getElementsByClassName('main-section-course-detailed')[0]);
