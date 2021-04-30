@@ -11,7 +11,8 @@ const Course = mongoose.model(
         level: String,  //difficulty
         price: String,
         requirements: String,
-        courseSyllabus: String
+        courseSyllabus: String,
+        users: Array
     })
 );
 

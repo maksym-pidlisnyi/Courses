@@ -34,7 +34,7 @@ class Navbar extends React.Component {
                     <nav>
                         <a href="/">Home</a>
                         <a href="/about">About Us</a>
-                        <a href="/courses">Products</a>
+                        <a href="/courses">Courses</a>
                     </nav>
                 </div>
                 <div id="registerMenu" className="register-menu">

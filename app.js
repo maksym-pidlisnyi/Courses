@@ -28,8 +28,6 @@ app.use(express.static(path.join(__dirname, 'src')));
 app.use(cors(corsOptions))
 
 
-//TODO move to index router
-// FOR TESTING PURPOSES
 app.get('/', (req, res) => {
     res.sendFile('index.html')
 })
@@ -92,23 +90,10 @@ app.get('/coursesapi', (req, res) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-
-// TODO maybe change into more clear way as above
-//  Now, just for testing
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 require('./routes/course.routes')(app);
 
-
-app.get('/api/getToken', (req, res) => {
-    let token = fs.readFileSync("token.txt","utf8")
-    res.send({token: token});
-})
-
-app.get('/logout', (req, res) => {
-    fs.writeFileSync("token.txt", '');
-    res.redirect('/');
-})
 
 db.mongoose
     .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
@@ -124,40 +109,40 @@ db.mongoose
         process.exit();
     });
 
-function initial() {
-    Role.estimatedDocumentCount((err, count) => {
-        if (!err && count === 0) {
-            new Role({
-                name: "user"
-            }).save(err => {
-                if (err) {
-                    console.log("error", err);
-                }
-
-                console.log("added 'user' to roles collection");
-            });
-
-            new Role({
-                name: "moderator"
-            }).save(err => {
-                if (err) {
-                    console.log("error", err);
-                }
-
-                console.log("added 'moderator' to roles collection");
-            });
-
-            new Role({
-                name: "admin"
-            }).save(err => {
-                if (err) {
-                    console.log("error", err);
-                }
-
-                console.log("added 'admin' to roles collection");
-            });
-        }
-    });
-}
+// function initial() {
+//     Role.estimatedDocumentCount((err, count) => {
+//         if (!err && count === 0) {
+//             new Role({
+//                 name: "user"
+//             }).save(err => {
+//                 if (err) {
+//                     console.log("error", err);
+//                 }
+//
+//                 console.log("added 'user' to roles collection");
+//             });
+//
+//             new Role({
+//                 name: "moderator"
+//             }).save(err => {
+//                 if (err) {
+//                     console.log("error", err);
+//                 }
+//
+//                 console.log("added 'moderator' to roles collection");
+//             });
+//
+//             new Role({
+//                 name: "admin"
+//             }).save(err => {
+//                 if (err) {
+//                     console.log("error", err);
+//                 }
+//
+//                 console.log("added 'admin' to roles collection");
+//             });
+//         }
+//     });
+// }
 
 module.exports = app;
