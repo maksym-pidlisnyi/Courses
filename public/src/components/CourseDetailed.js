@@ -8,6 +8,8 @@ class CourseDetailed extends React.Component {
         };
     }
 
+    // courseId = this.state.courseId;
+
     handleChange(val) {
         this.setState({courses: val});
     }
@@ -21,7 +23,7 @@ class CourseDetailed extends React.Component {
     }
 
     componentDidMount() {
-        this.state.courseId = window.location.href.split('/')[1];
+        this.state.courseId = window.location.href.split('/')[4];
 
         //todo uncomment when bd is ready this.loadPosts(id);
     }

@@ -56,7 +56,7 @@ class Courses extends React.Component {
 
     loadPosts() {
         let url;
-        if(window.location.href.split('/')[0]==='my-courses' && sessionStorage.getItem("role") === 'ROLE_USER') {
+        if(window.location.href.split('/')[3]==='my-courses' && sessionStorage.getItem("role") === 'ROLE_USER') {
             this.state.userCourses = true;
             url = "/userCourses/" + sessionStorage.getItem("userId");
             fetch(url)
