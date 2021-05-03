@@ -1,21 +1,21 @@
 function DangerBtn(props) {
-    if (sessionStorage.getItem("role") === 'admin') {
+    if (sessionStorage.getItem("role") === 'ROLE_ADMIN') {
         return <button className="danger-btn" onClick={async () => {
 
             try {
                 const response = await fetch('/coursesB', {
                     method: 'DELETE',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(props.id)
+                    body: JSON.stringify({id: props.id})
                 });
 
-                const responseObj = await response.json();
-                if (responseObj.message) {
-                    alert(responseObj.message);
-                    console.log(responseObj.error);
-                } else {
-                    alert('Course successfully deleted!');
-                }
+                // const responseObj = await response.json();
+                // if (responseObj.message) {
+                //     alert(responseObj.message);
+                //     console.log(responseObj.error);
+                // } else {
+                //     alert('Course successfully deleted!');
+                // }
             } catch (e) {
                 console.log(e);
             }
@@ -24,25 +24,28 @@ function DangerBtn(props) {
 
     } else if (props.userCourse) {
 
-        return <button className="danger-btn" onClick={async () => {
+        return <button className="danger-btn" onClick={async(e) => {
+            e.preventDefault();
+
             const courseId = props.id;
             const userId = sessionStorage.getItem("userId");
             try {
                 const response = await fetch('/checkOut', {
                     method: 'DELETE',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({courseId, userId})
+                    body: JSON.stringify({courseId: courseId, userId: userId})
                 });
 
-                const responseObj = await response.json();
-                if (responseObj.message) {
-                    alert(responseObj.message);
-                    console.log(responseObj.error);
-                } else {
-                    alert('Successfully unenrolled!');
-                }
-            } catch (e) {
-                console.log(e);
+                console.log(response.text())
+                // const responseObj = await JSON.parse(response);
+                // if (responseObj.message) {
+                //     alert(responseObj.message);
+                //     console.log(responseObj.error);
+                // } else {
+                //     alert('Successfully unenrolled!');
+                // }
+            } catch (er) {
+                console.log(er);
             }
 
         }}>Unenroll</button>

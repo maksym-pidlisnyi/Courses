@@ -21,6 +21,6 @@ module.exports = function(app) {
 
     app.post("/enroll", controller.enroll);
 
-    app.delete("/chekOut", controller.checkOut);
+    app.delete("/checkOut", controller.checkOut);
 
 };
