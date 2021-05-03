@@ -67,7 +67,7 @@ class Courses extends React.Component {
         } else {
             //todo all courses otherwise
             //todo replace -> coursesB
-            url = "/coursesapi"
+            url = "/coursesB"
             fetch(url)
                 .then((res) => res.json())
                 .then((res) => {
@@ -124,7 +124,7 @@ class Courses extends React.Component {
                     <AddCourseMenu/>
                     <div className="sort-bar">
                         <select name="sort-select" id="sort-select" onChange={ () => {
-                            const select = document.getElementById('sort-select');
+                                const select = document.getElementById('sort-select');
                             this.sortArr(select.value)
                         }}>
                             <option value="CheapToExpensive">Cheap to Expensive</option>
@@ -137,8 +137,8 @@ class Courses extends React.Component {
                     </div>
                     {this.state.courses.map((course) => (
                         <Course
-                            key = { course.id }
-                            id = { course.id }
+                            key = { course._id }
+                            id = { course._id }
                             title = { course.title}
                             description = { course.description }
                             price = { course.price }
