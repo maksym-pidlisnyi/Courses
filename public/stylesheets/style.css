@@ -242,6 +242,7 @@ cursor: pointer;
 
 .subscribe-form {
   margin-top: 25px;
+  display: flex;
 }
 
 
@@ -251,6 +252,7 @@ cursor: pointer;
   background-color: #212121;
   text-transform: uppercase;
   font-size: inherit;
+  width: 50%;
 }
 
 #subscribe-btn {
@@ -521,6 +523,7 @@ footer h5 {
   padding: 25px 50px;
   font-size: 15px;
   color: #fff;
+  overflow: hidden;
 }
 
 .course-additional-info {

@@ -79,6 +79,11 @@ class Courses extends React.Component {
 
     componentDidMount() {
         this.loadPosts();
+        this.interval = setInterval(() => this.loadPosts(), 10000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
 

@@ -113,7 +113,7 @@ class CourseDetailed extends React.Component {
                                             <span className="currency">$</span>
                                         </div>
                                         <p className="pricing-term">per month</p>
-                                        <a href="#" className="start-btn">start standard plan</a>
+                                        <a href="#" className="start-btn" onClick={()=> {this.enrollUser("standard")}}>start standard plan</a>
                                     </div>
                                     <div className="pricing-plan-features">
                                         <ul className="features-list">
@@ -136,7 +136,7 @@ class CourseDetailed extends React.Component {
                                             <span className="currency">$</span>
                                         </div>
                                         <p className="pricing-term">per month</p>
-                                        <a href="#" className="start-btn">start premium plan</a>
+                                        <a href="#" className="start-btn" onClick={()=> {this.enrollUser("premium")}}>start premium plan</a>
                                     </div>
                                     <div className="pricing-plan-features">
                                         <ul className="features-list">
