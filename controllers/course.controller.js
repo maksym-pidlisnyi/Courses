@@ -65,7 +65,7 @@ exports.getAllCoursesByUser = (req, res) => {
 
 exports.enroll = (req, res) => {
     let courseId = req.body.courseId;
-    let userObj = req.body.userId;
+    let userObj = req.body.userObj;
 
     Course.findOneAndUpdate( { _id: courseId }, { $push: { users: [userObj] } },
         {},function (err, doc) {

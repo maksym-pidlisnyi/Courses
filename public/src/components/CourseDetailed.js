@@ -8,10 +8,9 @@ class CourseDetailed extends React.Component {
         };
     }
 
-    // courseId = this.state.courseId;
 
     handleChange(val) {
-        this.setState({courses: val});
+        this.setState({course: val});
     }
 
     loadPosts(id) {
@@ -25,18 +24,17 @@ class CourseDetailed extends React.Component {
     componentDidMount() {
         this.state.courseId = window.location.href.split('/')[4];
 
-        //todo uncomment when bd is ready this.loadPosts(id);
+        this.loadPosts(this.state.courseId);
     }
 
     async enrollUser(paymentPlan) {
-        //todo add plan + term in body
         if ('accessToken' in sessionStorage) {
             const userId = sessionStorage.getItem('userId')
             try {
                 const response = await fetch('/enroll', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({courseId, userId})
+                    body: JSON.stringify({courseId: courseId, userObj: {userId: userId, pricingPlan: paymentPlan, pricingTerm: pricing_term}})
                 });
                 const responseObj = await response.json();
                 if (responseObj.message) {
@@ -65,10 +63,8 @@ class CourseDetailed extends React.Component {
                         <div className="course-header-text-block">
                             <div className="course-header-text-content">
                                 <h1 id="course-page-brand-name">WebDevCourses</h1>
-                                <h1>JS</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi asperiores earum
-                                    error eveniet quasi quo rem similique ut? Animi asperiores deleniti ex facilis,
-                                    maiores modi placeat quibusdam quod sequi ut.</p>
+                                <h1>{this.state.course.title}</h1>
+                                <p>{this.state.course.description}</p>
                             </div>
                             <a href="#detailed-course-pricing">Enroll Me!</a>
                         </div>
@@ -83,16 +79,16 @@ class CourseDetailed extends React.Component {
                                         const label = document.getElementById("pricing-plan-label");
                                         const prices = document.getElementsByClassName("price");
                                         if (document.getElementById("pricing-plan-input").checked === true) {
-                                            prices[0].innerHTML = "100";
-                                            prices[1].innerHTML = "150";
+                                            prices[0].innerHTML = this.state.course.price[1];
+                                            prices[1].innerHTML = this.state.course.price[3];
                                             this.state.pricing_term = "year";
                                             for (let el of document.getElementsByClassName("pricing-term")) {
                                                 el.innerHTML = "per year"
                                             }
                                             label.innerHTML = '😍';
                                         } else {
-                                            prices[0].innerHTML = "10";
-                                            prices[1].innerHTML = "16";
+                                            prices[0].innerHTML = this.state.course.price[0];
+                                            prices[1].innerHTML = this.state.course.price[2];
                                             this.state.pricing_term = "month";
                                             for (let el of document.getElementsByClassName("pricing-term")) {
                                                 el.innerHTML = "per month"
@@ -109,7 +105,7 @@ class CourseDetailed extends React.Component {
                                     <div className="pricing-plan-display">
                                         <h2>standard</h2>
                                         <div className="pricing-price">
-                                            <span className="price">10</span>
+                                            <span className="price">{this.state.course.price[0]}</span>
                                             <span className="currency">$</span>
                                         </div>
                                         <p className="pricing-term">per month</p>
@@ -132,7 +128,7 @@ class CourseDetailed extends React.Component {
                                     <div className="pricing-plan-display">
                                         <h2>premium</h2>
                                         <div className="pricing-price">
-                                            <span className="price">16</span>
+                                            <span className="price">{this.state.course.price[2]}</span>
                                             <span className="currency">$</span>
                                         </div>
                                         <p className="pricing-term">per month</p>
