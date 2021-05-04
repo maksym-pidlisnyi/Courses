@@ -692,7 +692,7 @@ html {
 
 .course-header-text-block a {
   display: block;
-  margin-top: 30px;
+  /*margin-top: 30px;*/
   margin-left: 55px;
   padding: 15px 55px;
   text-transform: uppercase;
@@ -706,7 +706,10 @@ html {
   background-color: #000;
 }
 
-.course-header-text-content {}
+.course-header-text-content {
+  height: 75%;
+  overflow: hidden;
+}
 
 .course-header-text-content h1 {
   font-size: 32px;
@@ -725,6 +728,8 @@ html {
   font-weight: lighter;
   color: #fff;
   padding: 10px 0 10px 55px;
+  height: 40%;
+  overflow: hidden;
 }
 
 /*PRICING PLANS*/

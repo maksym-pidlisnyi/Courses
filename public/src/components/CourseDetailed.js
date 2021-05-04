@@ -2,7 +2,7 @@ class CourseDetailed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            course: {},
+            course: {price:[]},
             pricing_term: "month",
             courseId: ""
         };
@@ -11,10 +11,11 @@ class CourseDetailed extends React.Component {
 
     handleChange(val) {
         this.setState({course: val});
+        console.log(val)
     }
 
     loadPosts(id) {
-        fetch('/coursesB/' + id,)
+        fetch('/coursesB/' + id)
             .then((res) => res.json())
             .then((res) => {
                 this.handleChange(res);
@@ -34,15 +35,17 @@ class CourseDetailed extends React.Component {
                 const response = await fetch('/enroll', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({courseId: courseId, userObj: {userId: userId, pricingPlan: paymentPlan, pricingTerm: pricing_term}})
+                    body: JSON.stringify({courseId: this.state.courseId, userObj: {userId: userId, pricingPlan: paymentPlan, pricingTerm: this.state.pricing_term}})
                 });
-                const responseObj = await response.json();
-                if (responseObj.message) {
-                    alert(responseObj.message);
-                    console.log(responseObj.error);
-                } else {
-                    alert('Successfully enrolled!');
-                }
+                // console.log(response.text())
+                // const responseObj = await response.json();
+                // if (responseObj.message) {
+                //     alert(responseObj.message);
+                //     console.log(responseObj.error);
+                // } else {
+                //     alert('Successfully enrolled!');
+                // }
+                alert('Successfully enrolled!');
             } catch (e) {
                 console.log(e);
             }
@@ -109,7 +112,7 @@ class CourseDetailed extends React.Component {
                                             <span className="currency">$</span>
                                         </div>
                                         <p className="pricing-term">per month</p>
-                                        <a href="#" className="start-btn" onClick={()=> {this.enrollUser("standard")}}>start standard plan</a>
+                                        <button className="start-btn" onClick={()=> {this.enrollUser("standard")}}>start standard plan</button>
                                     </div>
                                     <div className="pricing-plan-features">
                                         <ul className="features-list">
@@ -132,7 +135,7 @@ class CourseDetailed extends React.Component {
                                             <span className="currency">$</span>
                                         </div>
                                         <p className="pricing-term">per month</p>
-                                        <a href="#" className="start-btn" onClick={()=> {this.enrollUser("premium")}}>start premium plan</a>
+                                        <button className="start-btn" onClick={()=> {this.enrollUser("premium")}}>start premium plan</button>
                                     </div>
                                     <div className="pricing-plan-features">
                                         <ul className="features-list">

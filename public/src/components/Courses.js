@@ -17,8 +17,8 @@ function AddCourseMenu() {
                     <form className="add-course-form" onSubmit={async () => {
                         try {
                             const title = document.getElementById("course-title").value;
-                            const description = document.getElementById("start-date").value;
-                            const startDate = document.getElementById("add-course-description").value;
+                            const startDate = document.getElementById("start-date").value;
+                            const description = document.getElementById("add-course-description").value;
                             const stM = document.getElementById("course-sm").value;
                             const stY = document.getElementById("course-sy").value;
                             const prM = document.getElementById("course-pm").value;
