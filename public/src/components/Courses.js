@@ -14,7 +14,33 @@ function AddCourseMenu() {
                 }
                 }>Add New Course</button>
                 <div className="collapsible-course-adding">
-                    <form className="add-course-form">
+                    <form className="add-course-form" onSubmit={async () => {
+                        try {
+                            const title = document.getElementById("course-title").value;
+                            const description = document.getElementById("start-date").value;
+                            const startDate = document.getElementById("add-course-description").value;
+                            const stM = document.getElementById("course-sm").value;
+                            const stY = document.getElementById("course-sy").value;
+                            const prM = document.getElementById("course-pm").value;
+                            const prY = document.getElementById("course-py").value;
+
+                            const response = await fetch('/coursesB', { //todo change URL
+                                method: 'POST',
+                                headers: {'Content-Type': 'application/json'},
+                                body: JSON.stringify({title: title, startDate: startDate, description: description, price: [stM, stY, prM, prY]})
+                            });
+                            console.log(response.text());
+                            // const responseObj = await response.json();
+                            // if (responseObj.message) {
+                            //     alert(responseObj.message);
+                            //     console.log(responseObj.error);
+                            // } else {
+                            //     alert('Course added successfully!');
+                            // }
+                        } catch (e) {
+                            console.log(e);
+                        }
+                    }}>
                         <input type="text" id="course-title" name="course-title" placeholder="Title" required/>
                         <input type="date" id="start-date" name="start-date" min={Date.now()} placeholder="Start Date" required/>
                         <div className="add-course-prices">
