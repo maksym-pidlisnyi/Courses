@@ -54,7 +54,7 @@ exports.getCourse = (req, res) => {
 
 exports.getAllCoursesByUser = (req, res) => {
     let userId = req.params.userId;
-    Course.find({ users: userId }, function (err, result) {
+    Course.find({ users: {  $elemMatch: {userId: userId } } }, function (err, result) {
         if (err) {
             console.log(err);
         } else {
@@ -65,9 +65,9 @@ exports.getAllCoursesByUser = (req, res) => {
 
 exports.enroll = (req, res) => {
     let courseId = req.body.courseId;
-    let userId = req.body.userId;
+    let userObj = req.body.userId;
 
-    Course.findOneAndUpdate( { _id: courseId }, { $push: { users: userId } },
+    Course.findOneAndUpdate( { _id: courseId }, { $push: { users: [userObj] } },
         {},function (err, doc) {
             if (err) return res.send(500, {error: err});
             return res.send('Enrolled successfully!');
@@ -78,7 +78,7 @@ exports.checkOut = (req, res) => {
     let courseId = req.body.courseId;
     let userId = req.body.userId;
 
-    Course.findOneAndUpdate( { _id: courseId }, { $pull: { users: userId } },
+    Course.findOneAndUpdate( { _id: courseId }, { $pull: { users: {  userId: userId  } } },
         {},function (err, doc) {
             if (err) return res.send(500, {error: err});
             return res.send('Checked out successfully!');

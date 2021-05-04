@@ -79,7 +79,7 @@ class Courses extends React.Component {
 
     componentDidMount() {
         this.loadPosts();
-        this.interval = setInterval(() => this.loadPosts(), 10000);
+        this.interval = setInterval(() => this.loadPosts(), 1000);
     }
 
     componentWillUnmount() {
@@ -141,7 +141,7 @@ class Courses extends React.Component {
                             id = { course._id }
                             title = { course.title}
                             description = { course.description }
-                            price = { course.price }
+                            price = { course.price[0] }
                             startDate = { course.startDate }
                             userCourse = { this.state.userCourses }
                         />

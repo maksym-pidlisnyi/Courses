@@ -9,7 +9,7 @@ const Course = mongoose.model(
         startDate: String,
         endDate: String,
         level: String,  //difficulty
-        price: String,
+        price: Array, // Standard Month and Year, Premium Month and Year
         requirements: String,
         courseSyllabus: String,
         users: Array
