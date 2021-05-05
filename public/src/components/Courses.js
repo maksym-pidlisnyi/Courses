@@ -73,6 +73,8 @@ class Courses extends React.Component {
             price: 'price',
             startDate: 'startDate'
         }
+
+        this.last_sort_key = "AZ"
     }
 
     handleChange(val) {
@@ -88,16 +90,15 @@ class Courses extends React.Component {
             fetch(url)
                 .then((res) => res.json())
                 .then((res) => {
-                    this.handleChange(res);
+                    this.sortArr(this.last_sort_key);
                 });
         } else {
-            //todo all courses otherwise
-            //todo replace -> coursesB
+            //all courses otherwise
             url = "/coursesB"
             fetch(url)
                 .then((res) => res.json())
                 .then((res) => {
-                    this.handleChange(res);
+                    this.sortArr(this.last_sort_key);
                 });
         }
     }
@@ -150,8 +151,10 @@ class Courses extends React.Component {
                     <AddCourseMenu/>
                     <div className="sort-bar">
                         <select name="sort-select" id="sort-select" onChange={ () => {
-                                const select = document.getElementById('sort-select');
-                            this.sortArr(select.value)
+                            const select = document.getElementById('sort-select');
+                            const sv = select.value;
+                            this.last_sort_key = sv;
+                            this.sortArr(sv)
                         }}>
                             <option value="CheapToExpensive">Cheap to Expensive</option>
                             <option value="ExpensiveToCheap">Expensive to Cheap</option>
