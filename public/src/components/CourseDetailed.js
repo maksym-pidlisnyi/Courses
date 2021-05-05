@@ -37,15 +37,16 @@ class CourseDetailed extends React.Component {
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({courseId: this.state.courseId, userObj: {userId: userId, pricingPlan: paymentPlan, pricingTerm: this.state.pricing_term}})
                 });
-                // console.log(response.text())
-                // const responseObj = await response.json();
+                // console.log(await response.text())
+
+                alert('Successfully enrolled!');
+                // const responseObj = JSON.parse(await response.json());
+                // console.log(responseObj)
                 // if (responseObj.message) {
                 //     alert(responseObj.message);
-                //     console.log(responseObj.error);
                 // } else {
                 //     alert('Successfully enrolled!');
                 // }
-                alert('Successfully enrolled!');
             } catch (e) {
                 console.log(e);
             }

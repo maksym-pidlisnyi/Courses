@@ -67,11 +67,28 @@ exports.enroll = (req, res) => {
     let courseId = req.body.courseId;
     let userObj = req.body.userObj;
 
-    Course.findOneAndUpdate( { _id: courseId }, { $push: { users: [userObj] } },
-        {},function (err, doc) {
-            if (err) return res.send(500, {error: err});
-            return res.send('Enrolled successfully!');
-    })
+
+
+    Course.find({ _id: courseId, users: { $elemMatch: {userId: userObj.userId } } }, function (err, result) {
+        // if (err) return res.send(500, {error: err});
+        console.log(result);
+        console.log(result.length)
+        if (!!result) {
+            if (Array.isArray(result) && result.length === 0) {
+                Course.findOneAndUpdate({_id: courseId}, {$push: {users: [userObj]}},
+                    {}, function (err, doc) {
+                        if (err) return res.send(500, {error: err});
+                        return res.send('Enrolled successfully!');
+                    })
+            } else {
+                return res.send(200, {
+                    message: "This user is already enrolled in this course"
+                })
+            }
+        }
+    } )
+
+
 }
 
 exports.checkOut = (req, res) => {

@@ -74,7 +74,7 @@ class Courses extends React.Component {
             startDate: 'startDate'
         }
 
-        this.last_sort_key = "AZ"
+        this.last_sort_key = "CheapToExpensive"
     }
 
     handleChange(val) {
@@ -90,6 +90,7 @@ class Courses extends React.Component {
             fetch(url)
                 .then((res) => res.json())
                 .then((res) => {
+                    this.handleChange(res);
                     this.sortArr(this.last_sort_key);
                 });
         } else {
@@ -98,6 +99,7 @@ class Courses extends React.Component {
             fetch(url)
                 .then((res) => res.json())
                 .then((res) => {
+                    this.handleChange(res);
                     this.sortArr(this.last_sort_key);
                 });
         }
@@ -106,7 +108,7 @@ class Courses extends React.Component {
 
     componentDidMount() {
         this.loadPosts();
-        this.interval = setInterval(() => this.loadPosts(), 1000);
+        this.interval = setInterval(() => this.loadPosts(), 3000);
     }
 
     componentWillUnmount() {

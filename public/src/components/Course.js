@@ -9,6 +9,7 @@ function DangerBtn(props) {
                     body: JSON.stringify({id: props.id})
                 });
 
+                alert('Successfully deleted!');
                 // const responseObj = await response.json();
                 // if (responseObj.message) {
                 //     alert(responseObj.message);
@@ -37,6 +38,7 @@ function DangerBtn(props) {
                 });
 
                 console.log(response.text())
+                alert('Successfully unenrolled!');
                 // const responseObj = await JSON.parse(response);
                 // if (responseObj.message) {
                 //     alert(responseObj.message);
